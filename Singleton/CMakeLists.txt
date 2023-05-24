@@ -1,0 +1,12 @@
+cmake_minimum_required(VERSION 3.0.0)
+project(Singleton VERSION 0.1.0)
+
+include(CTest)
+enable_testing()
+
+set(SOURCES main.cpp StdLog.cpp ILog.h StdLog.h)
+add_executable(Singleton ${SOURCES})
+
+set(CPACK_PROJECT_NAME ${PROJECT_NAME})
+set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
+include(CPack)
