@@ -3,7 +3,7 @@
  * @author      Matteo Gianferrari (https://github.com/matteogianferrari)
  * 
  * @brief       Concrete application example of the "Singleton" design pattern.
- * @details     This application simulates a threaded enviroment where 2 threads
+ * @details     This application simulates a multi-thread enviroment where 2 threads
  *              @n call the Logging "Singleton" to gain access to the logging system
  *              @n and print a log message.
  *              @n This example shows one implementation of the "Singleton" design pattern.
@@ -20,6 +20,7 @@
 #include <thread>
 #include "ILog.h"
 #include "StdLog.h"
+
 
 /**
  * @fn      getLogging
