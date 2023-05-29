@@ -1,5 +1,6 @@
-#include "Cache.h"
 #include <iostream>
+#include "Cache.h"
+
 
 //The static member of the Cache class need to be initialised outside the constructor
 std::mutex Cache::_mutex {};
@@ -10,6 +11,7 @@ Cache::Cache():
     _hashMap {}
 {
 }
+
 
 Cache::~Cache()
 {

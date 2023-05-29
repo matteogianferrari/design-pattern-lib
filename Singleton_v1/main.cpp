@@ -4,11 +4,17 @@
  * 
  * @brief       Concrete application example of the "Singleton" design pattern.
  * @details     This application simulates a multi-thread enviroment where 2 threads
- *              @n call the Logging "Singleton" to gain access to the logging system
- *              @n and print a log message.
+ *              @n call the Cache "Singleton" to gain access to the cache memory
+ *              to put and get data.
  *              @n This example shows one implementation of the "Singleton" design pattern.
  *              @n It's suggested to use this method in a controlled enviroment and not to
- *              @n be used by a third party client.
+ *              be used by a third party client.
+ * 
+ * @note        Use the "Singleton" pattern when:
+ *              @n -There must be exactly one instance of a class, and it must be accessible
+ *              to clients from a well-known access point.
+ *              @n -The sole instance should be extensible by subclassing, and clients
+ *              should be able to use an extended instance without modifying their code.
  * 
  * @version     0.1
  * @date        2023-05-25
@@ -18,56 +24,59 @@
 
 #include <iostream>
 #include <thread>
-#include "ILog.h"
-#include "StdLog.h"
+#include "Cache.h"
 
 
 /**
- * @fn      getLogging
- * @brief   Gets the Logging object.
+ * @fn      getCache
+ * @brief   Gets the Cache object.
  * 
  * @details This function implements the "Singleton" design pattern.
  *          @n This method is suggested to be used in a confined enviroment.
  *          @n It's not the best implementation of a "Singleton" if a third-party developer
- *          @n needs to use this logging system in its project.
+ *          needs to use this logging system in its project.
  * 
- * @return  ILog* A pointer to an abstract class ILog object.
+ * @return  Cache* A pointer to a Cache object.
  */
-ILog* getLogging(void)
+static Cache* getCache()
 {
-    //Change the static declaration with the derived logging class.
-    static StdLog logging {};
-    return &logging;
+    static Cache cache {};
+    return &cache;
 }
 
 
 /**
  * @fn      client1 
- * @brief   Function that simulates a client that prints a logging message.
+ * @brief   Function that simulates a client that sets data in the cache.
  * 
- * @details This function calls the Logging "Singleton" to print a message.
+ * @details This function calls the Cache "Singleton" to set data.
  *          @n Used to simulate a threaded system.
  */
 void client1(void)
 {
-    getLogging()->print("Hi my name is Matteo and this is thread: %d\n", 1);
+    Cache* pCache = getCache();
+    
+    pCache->putData("Balance", 100);
 }
 
 
 /**
  * @fn      client2
- * @brief   Function that simulates a client that prints a logging message.
+ * @brief   Function that simulates a client that gets data from the cache.
  * 
- * @details This function calls the Logging "Singleton" to print a message.
+ * @details This function calls the Cache "Singleton" to get data.
  *          @n Used to simulate a threaded system.
  */
 void client2(void)
 {
-    getLogging()->print("Hi from thread: %d\n", 2);
+    Cache* pCache = getCache();
+
+    std::cout << "Balance: " << pCache->getData("Balance") << std::endl;
 }
 
 
-int main(int argc, char** argv) {
+int main(int argc, char** argv)
+{
     //Threads creation
     std::thread t1 {client1};
     std::thread t2 {client2};

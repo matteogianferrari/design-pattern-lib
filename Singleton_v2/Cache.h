@@ -36,7 +36,7 @@ public:
      * 
      * @details This function implements the "Singleton" design pattern.
      *          @n It's the safest implementation of a "Singleton" if a third-party developer
-     *          @n needs to use this cache memory in its project.
+     *          needs to use this cache memory in its project.
      * 
      * @return  Cache* A pointer to a Cache object.
      */
@@ -80,8 +80,7 @@ public:
      * @brief   Retrieves the value mapped to the key in the Cache memory.
      * 
      * @param   key String used as index in the Cache.
-     * @return  int32_t The value associated to Key in the Cache if present,
-     *          @n 0 otherwise.
+     * @return  int32_t The value associated to Key in the Cache if present, 0 otherwise.
      */
     int32_t getData(std::string key);
 
