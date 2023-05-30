@@ -5,11 +5,15 @@
 #include "MillCnc.h"
 #include "MillCncFactory.h"
 #include <iostream>
+//-Implement the factory method, abstract class with no factoryMethod implementation (only virtual definition = 0).
 
 void client(ICncFactory* pFactory)
 {
-    pFactory->setupCnc();
+    std::string partProgramName {"90351209_F1"};
+
+    pFactory->setupCnc(partProgramName);
 }
+
 
 int main(int, char**) {
     LatheCncFactory latheFactory {};
