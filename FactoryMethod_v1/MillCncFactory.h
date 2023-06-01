@@ -49,6 +49,9 @@ public:
      * @return  ICnc* A pointer to an ICnc object.
      */
     ICnc* factoryMethod(void) override;
+
+private:
+    std::mutex _mutex;  /*Mutex for the thread-safety.*/
 };
 
 #endif  //MILLCNCFACTORY_H

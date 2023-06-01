@@ -13,6 +13,7 @@
 #ifndef MILLCNC_H
 #define MILLCNC_H
 
+#include <mutex>
 #include <cstdint>
 #include "ICnc.h"
 
@@ -60,6 +61,7 @@ public:
     void startMachining(void) override;
 
 private:
+    std::mutex _mutex;              /*Mutex for the thread-safety.*/
     std::string _partProgramName;   /*The part program's name.*/
     uint32_t _axisNumber;           /*Number of axis on the mill.*/
 };

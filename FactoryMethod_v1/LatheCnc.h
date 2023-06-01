@@ -13,6 +13,7 @@
 #ifndef LATHECNC_H
 #define LATHECNC_H
 
+#include <mutex>
 #include "ICnc.h"
 
 /**
@@ -60,6 +61,7 @@ public:
     void startMachining(void) override;
 
 private:
+    std::mutex _mutex;              /*Mutex for the thread-safety.*/
     std::string _partProgramName;   /*The part program's name.*/
     bool _rotaryTurret;             /*Flag that indicates if the lathe Cnc
                                      *has a rotary turret installed.*/

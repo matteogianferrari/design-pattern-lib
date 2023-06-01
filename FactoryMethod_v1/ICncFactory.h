@@ -13,6 +13,7 @@
 #ifndef ICNCFACTORY_H
 #define ICNCFACTORY_H
 
+#include <mutex>
 #include "ICnc.h"
 
 /**
@@ -59,7 +60,10 @@ public:
      * @param partProgramName The part program's name.
      */
     void setupCnc(std::string& partProgramName)
-    {
+    {   
+        std::mutex mutex {};
+        std::lock_guard<std::mutex> lock {mutex};
+
         //Calls a concrete factoryMethod function with "this" pointer. 
         //All classes that derive from ICncFactory inherit setupCnc, and they
         //implement the factoryMethod function with the specific Cnc.

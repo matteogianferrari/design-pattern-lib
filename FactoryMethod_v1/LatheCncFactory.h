@@ -13,6 +13,7 @@
 #ifndef LATHECNCFACTORY_H
 #define LATHECNCFACTORY_H
 
+#include <mutex>
 #include "ICncFactory.h"
 
 /**
@@ -49,6 +50,9 @@ public:
      * @return  ICnc* A pointer to an ICnc object.
      */
     ICnc* factoryMethod(void) override;
+
+private:
+    std::mutex _mutex;  /*Mutex for the thread-safety.*/
 };
 
 #endif  //LATHECNCFACTORY_H
