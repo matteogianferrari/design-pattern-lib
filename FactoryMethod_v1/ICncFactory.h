@@ -17,7 +17,7 @@
 #include "ICnc.h"
 
 /**
- * @class   ICnc "ICnc.h" 
+ * @class   ICncFactory "ICncFactory.h" 
  * @brief   Abstract class for a generic Cnc factory.
  * 
  * @details The implementations of this class must provide the function factoryMethod,
