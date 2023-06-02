@@ -6,9 +6,9 @@
  * @details     This application simulates a multi-thread enviroment where 2 threads
  *              @n call the Cnc "Factory Method" and perform action with the Cnc machine.
  *              @n This example shows one implementation of the "Factory Method" design pattern.
- *              @n This method uses a concrete class CncFactory with a concrete implementation
- *              of the factory method in it. This function uses a switch to select which
- *              concrete Cnc machine to create based on the input value.
+ *              @n This method uses a concrete class CncFactory with a template argument that
+ *              must be a concrete Cnc class derived from ICnc. The function factoryMethod
+ *              creates an object T which is casted to ICnc* internally.
  * 
  * @note        Use the "Factory Method" pattern when:
  *              @n -A class can't anticipate the class of objects it must create.
@@ -24,6 +24,8 @@
 
 #include <thread>
 #include "ICnc.h"
+#include "LatheCnc.h"
+#include "MillCnc.h"
 #include "CncFactory.h"
 
 
@@ -34,14 +36,14 @@
  * @details This function calls the Cnc factory "Factory Method" to create the Cnc machine.
  *          @n Used to simulate a threaded system.
  * 
- * @param   pFactory Pointer to a Cnc factory object.
+ * @param   factory Reference to a template Cnc factory object.
  */
-void client1(CncFactory* pFactory)
+template <class T>
+void client1(CncFactory<T>& factory)
 {
-    std::string cncType {"Mill"};
     std::string partProgramName {"90351053_F1"};
 
-    ICnc* cnc {pFactory->factoryMethod(cncType)};
+    ICnc* cnc {factory.factoryMethod(1)};
     cnc->setPartProgram(partProgramName);
     cnc->startMachining();
 
@@ -56,14 +58,14 @@ void client1(CncFactory* pFactory)
  * @details This function calls the Cnc factory "Factory Method" to create the Cnc machine.
  *          @n Used to simulate a threaded system.
  * 
- * @param   pFactory Pointer to a Cnc factory object.
+ * @param   factory Reference to a template Cnc factory object.
  */
-void client2(CncFactory* pFactory)
+template <class T>
+void client2(CncFactory<T>& factory)
 {
-    std::string cncType {"Lathe"};
     std::string partProgramName {"90010005_F1"};
 
-    ICnc* cnc {pFactory->factoryMethod(cncType)};
+    ICnc* cnc {factory.factoryMethod(5)};
     cnc->setPartProgram(partProgramName);
     cnc->startMachining();
 
@@ -72,10 +74,11 @@ void client2(CncFactory* pFactory)
 
 
 int main(int, char**) {
-    CncFactory factory {};
+    CncFactory<LatheCnc> latheFactory {};
+    CncFactory<MillCnc> millFactory {};
 
-    std::thread t1 {client1, &factory};
-    std::thread t2 {client2, &factory};
+    std::thread t1 {client1<LatheCnc>, std::ref(latheFactory)};
+    std::thread t2 {client2<MillCnc>, std::ref(millFactory)};
 
     t1.join();
     t2.join();

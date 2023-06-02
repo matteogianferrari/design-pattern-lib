@@ -37,6 +37,8 @@
  * 
  * @details This function calls the Cnc factory "Factory Method" to create the Cnc machine.
  *          @n Used to simulate a threaded system.
+ * 
+ * @param   pFactory Pointer to a concrete Cnc factory object.
  */
 void client1(ICncFactory* pFactory)
 {
@@ -47,11 +49,13 @@ void client1(ICncFactory* pFactory)
 
 
 /**
- * @fn      client12
+ * @fn      client2
  * @brief   Function that simulates a client that creates a cnc machine ad uses it.
  * 
  * @details This function calls the Cnc factory "Factory Method" to create the Cnc machine.
  *          @n Used to simulate a threaded system.
+ * 
+ * @param   pFactory Pointer to a concrete Cnc factory object.
  */
 void client2(ICncFactory* pFactory)
 {
