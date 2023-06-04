@@ -41,7 +41,7 @@ public:
      * @fn      ~BatteryDrill
      * @brief   Destroy the Battery Drill object.
      */
-    ~BatteryDrill();
+    ~BatteryDrill() override;
 
     /**
      * @fn      use 

@@ -39,7 +39,7 @@ public:
      * @fn      ~DrillFactory
      * @brief   Destroy the Drill Factory object.
      */
-    ~DrillFactory();
+    virtual ~DrillFactory();
 
     /**
      * @fn      factoryMethod

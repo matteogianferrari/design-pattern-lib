@@ -38,7 +38,7 @@ public:
      * @fn      ~Drill
      * @brief   Destroy the Drill object.
      */
-    ~Drill();
+    virtual ~Drill();
 
     /**
      * @fn      use 

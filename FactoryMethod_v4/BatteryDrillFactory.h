@@ -42,7 +42,7 @@ public:
      * @fn      ~BatteryDrillFactory
      * @brief   Destroy the Battery Drill Factory object.
      */
-    ~BatteryDrillFactory();
+    ~BatteryDrillFactory() override;
 
     /**
      * @fn      factoryMethod
