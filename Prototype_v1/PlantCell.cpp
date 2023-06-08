@@ -25,7 +25,7 @@ PlantCell::~PlantCell()
 ICell* PlantCell::clone(void)
 {
     std::lock_guard<std::mutex> lock {_mutex};
-    //Clones the plant cell object using the copy constructor
+    //Clones the fungi cell object using the copy constructor
     return new PlantCell {*this};
 }
 
