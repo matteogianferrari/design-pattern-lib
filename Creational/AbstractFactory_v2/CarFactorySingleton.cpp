@@ -1,7 +1,7 @@
 #include "CarFactorySingleton.h"
 
 
-//The static member of the Cache class need to be initialised outside the constructor
+//The static member of the CarFactory class need to be initialised outside the constructor
 std::mutex CarFactorySingleton::_mutex {};
 ICarFactory* CarFactorySingleton::_pInstance {nullptr};
 

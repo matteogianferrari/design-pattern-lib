@@ -49,6 +49,8 @@ public:
      * @fn      makeSuv
      * @brief   Creates and returns a Mercedes suv.
      * 
+     * @details This function is the "factoryMethod" design pattern.
+     * 
      * @return  ISuv* A pointer to an ISuv object.
      */
     ISuv* makeSuv(void) override;
@@ -56,6 +58,8 @@ public:
     /**
      * @fn      makeSportCar
      * @brief   Creates and returns a Mercedes sport car.
+     * 
+     * @details This function is the "factoryMethod" design pattern.
      * 
      * @return  ISportCar* A pointer to a ISportCar object.
      */

@@ -8,7 +8,8 @@
  *              @n This example shows one implementation of the "Abstract Factory" design pattern.
  *              This method uses an abstract class ICarFactory with the derived classes that
  *              are related to car brands. Every car brand factory can create their version of
- *              the suv and sport car.
+ *              the suv and sport car. This method uses the "factoryMethod" design pattern for
+ *              creating the single object in the related family.
  * 
  * @note        Use the Abstract Factory pattern when:
  *              @n -A system should be independent of how its products are created, composed

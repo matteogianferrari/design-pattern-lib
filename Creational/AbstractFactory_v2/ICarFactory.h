@@ -40,6 +40,8 @@ public:
      * @fn      makeSuv
      * @brief   Creates and returns an Suv of a specific family.
      * 
+     * @details This function is the "factoryMethod" design pattern.
+     * 
      * @return  ISuv* A pointer to an ISuv object.
      */
     virtual ISuv* makeSuv(void) = 0;
@@ -47,6 +49,8 @@ public:
     /**
      * @fn      makeSportCar
      * @brief   Creates and returns a Sport car of a specific family.
+     * 
+     * @details This function is the "factoryMethod" design pattern.
      * 
      * @return  ISportCar* A pointer to an ISportCar object.
      */
