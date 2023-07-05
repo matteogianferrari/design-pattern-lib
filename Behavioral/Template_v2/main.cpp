@@ -3,11 +3,13 @@
  * @author      Matteo Gianferrari (https://github.com/matteogianferrari)
  * 
  * @brief       Concrete application example of the "Template" design pattern.
- * @details     This application simulates an enviroment where a client applies operations
- *              to a signal.
+ * @details     This application simulates an enviroment where a client performs actions
+ *              on a sensor.
  *              @n This example shows one implementation of the "Template" design pattern.
- *              @n The pattern relies on an abstract class that defines a common interface.
- *              The derived classes must implements the functions.
+ *              @n The pattern relies on a base class that implements a common part of 
+ *              code in a function. The derived classes don't have to repeat the common code
+ *              and can call the base class function. The derived classes need to implement
+ *              the specific function that is pure virtual.
  * 
  * @note        Use the "Template" pattern when:
  *              @n -You want to implement the invariant parts of an algorithm once and
@@ -25,27 +27,29 @@
  */
 
 #include <iostream>
-#include "ISignal.h"
-#include "TtlSignal.h"
-#include "CmosSignal.h"
+#include "Sensor.h"
+#include "Encoder.h"
+#include "Gyroscope.h"
+
 
 /**
  * @fn      client
- * @brief   Function that simulates a client that prints and processes a signal.
+ * @brief   Function that simulates a client that performs actions on a sensor.
  * 
- * @param   signal Pointer to an ISignal object.
+ * @param   sensor Pointer to an Sensor object.
  */
-void client(ISignal* signal)
+void client(Sensor* sensor)
 {
-    std::cout << "Input signal: " << signal->getVoltage() << std::endl;
-    std::cout << "Processed signal: " << signal->process() << std::endl;
+    std::cout << "Sensor value: " << sensor->getValue() << std::endl;
+    sensor->switchState(false);
+    std::cout << "Sensor value: " << sensor->getValue() << std::endl;
 }
 
 
 int main(int argc, char** argv)
 {
-    TtlSignal s1 {5.f};
-    CmosSignal s2 {3.3f};
+    Encoder s1 {};
+    Gyroscope s2 {};
 
     client(&s1);
     client(&s2);
