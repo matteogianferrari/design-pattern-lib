@@ -1,10 +1,7 @@
 # Design Pattern Examples Library
 
+![Status](https://img.shields.io/badge/Status-In%20progress-red)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-![Issues](https://img.shields.io/github/issues/matteogianferrari/DesignPattern)
-![Contributors](https://img.shields.io/github/contributors/matteogianferrari/DesignPattern?color=dark-green)
-![Forks](https://img.shields.io/github/forks/matteogianferrari/DesignPattern?style=social)
-![Stargazers](https://img.shields.io/github/stars/matteogianferrari/DesignPattern?style=social) 
 
 Welcome to the Design Pattern Examples Library! This repository provides a collection of concrete examples for commonly used design patterns in software engineering. Whether you're a beginner looking to understand design patterns or an experienced developer seeking practical implementations, this library is here to assist you.
 
